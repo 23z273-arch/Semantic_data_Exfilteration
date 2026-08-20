@@ -12,9 +12,14 @@ RUN npm run build
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Custom nginx config to handle SPA routing if necessary
+# Custom nginx config with reverse proxy to FastAPI backend
 RUN echo 'server { \
     listen 80; \
+    location /v1/ { \
+        proxy_pass http://backend:8000/v1/; \
+        proxy_set_header Host $host; \
+        proxy_set_header X-Real-IP $remote_addr; \
+    } \
     location / { \
         root /usr/share/nginx/html; \
         index index.html index.htm; \
