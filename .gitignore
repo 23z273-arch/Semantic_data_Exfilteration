@@ -19,7 +19,6 @@ backend/data/*.db-shm
 backend/data/*.db-wal
 backend/data/*.faiss
 backend/data/*.json
-data/
 
 # IDE / Editor configurations
 .vscode/
