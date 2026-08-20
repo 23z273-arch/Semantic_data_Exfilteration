@@ -1,4 +1,14 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/v1';
+const getApiBaseUrl = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  if (import.meta.env.PROD) {
+    return '/v1';
+  }
+  return 'http://localhost:8000/v1';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 async function request(path, options = {}) {
   const url = `${API_BASE_URL}${path}`;
