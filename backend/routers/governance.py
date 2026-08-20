@@ -318,7 +318,7 @@ def run_benchmark(req: BenchmarkRequest, db: Session = Depends(get_db)) -> Dict[
         eval_result = evaluate(eval_req, db=db)
 
         # Surgical rate-limiting delay for Gemini free tier (15 RPM limit)
-        if eval_result.get("stage_executed") == 2:
+        if eval_result.get("stage_executed") == 2 and settings.effective_llm_provider == "gemini":
             time.sleep(4.0)
 
         actual_decision = eval_result["decision"]

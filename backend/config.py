@@ -99,14 +99,14 @@ class Settings(BaseSettings):
 
     @property
     def effective_llm_provider(self) -> str:
-        """Get the resolved LLM provider, falling back to anthropic/groq/gemini or mock if unavailable."""
+        """Get the resolved LLM provider, falling back to mock if chosen provider is unavailable."""
+        if self.LLM_PROVIDER == "mock":
+            return "mock"
         if self.LLM_PROVIDER == "openai" and not self.openai_available:
-            if self.anthropic_available:
-                return "anthropic"
             if self.groq_available:
                 return "groq"
-            if self.gemini_available:
-                return "gemini"
+            if self.anthropic_available:
+                return "anthropic"
             return "mock"
         if self.LLM_PROVIDER == "anthropic" and not self.anthropic_available:
             return "mock"
