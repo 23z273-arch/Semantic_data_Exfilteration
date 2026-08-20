@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+backend/venv/
+venv/
+.venv/
+env/
+
+# Environment Variables
+.env
+backend/.env
+
+# Local Databases and Vector Store Indexes
+backend/data/*.db
+backend/data/*.db-shm
+backend/data/*.db-wal
+backend/data/*.faiss
+backend/data/*.json
+data/
+
+# IDE / Editor configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Node dependencies (Frontend)
+frontend/node_modules/
+frontend/dist/
