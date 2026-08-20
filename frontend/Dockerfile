@@ -15,8 +15,8 @@ COPY --from=build /app/dist /usr/share/nginx/html
 # Custom nginx config with reverse proxy to FastAPI backend
 RUN echo 'server { \
     listen 80; \
-    location /v1/ { \
-        proxy_pass http://backend:8000/v1/; \
+    location /v1 { \
+        proxy_pass http://backend:8000; \
         proxy_set_header Host $host; \
         proxy_set_header X-Real-IP $remote_addr; \
     } \
