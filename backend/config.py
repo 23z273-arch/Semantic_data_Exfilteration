@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     EMBEDDING_DIM: int = 768                 # Gemini output dim (768/1536/3072)
 
     # ── LLM for factual verification ──────────────────────────────────────────
-    LLM_PROVIDER: str = "openai"             # "openai" | "anthropic" | "groq" | "gemini" | "mock"
+    LLM_PROVIDER: str = "mock"             # "openai" | "anthropic" | "groq" | "gemini" | "mock"
     ANTHROPIC_API_KEY: Optional[str] = None
     GROQ_API_KEY: Optional[str] = None
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
